@@ -4,6 +4,17 @@ class User < ApplicationRecord
 
     before_validation :ensure_session_token
 
+    has_many :cat_rental_requests,
+        foreign_key: :requester_id,
+        inverse_of: :requester,
+        dependent: :destroy
+        
+    has_many :cats,
+        foreign_key: :owner_id,
+        dependent: :destroy,
+        inverse_of: :owner
+
+
     def self.find_by_credentials(username, password)
         user = User.find_by(username: username)
         if user && user.is_password?(password)

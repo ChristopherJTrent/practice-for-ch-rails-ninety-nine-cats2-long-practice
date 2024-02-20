@@ -26,6 +26,9 @@ class Cat < ApplicationRecord
   validates :birth_date, :name, presence: true
   validate :birth_date_cannot_be_future
 
+  belongs_to :owner,
+    class_name: :User
+
   # Remember: `has_many` is just a method where the first argument is the name
   # of the association and the second argument is an options hash.
   has_many :rental_requests,

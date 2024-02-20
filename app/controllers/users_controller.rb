@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+
+    before_action :require_logged_out
     #* SECTION user interface
     def new
         @user = User.new
