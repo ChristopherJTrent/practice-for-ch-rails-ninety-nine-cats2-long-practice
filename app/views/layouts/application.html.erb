@@ -14,9 +14,7 @@
   <body>
     <nav class="main-nav">
       <h1><a href="<%= cats_url %>">99 Cats</a></h1>
-    </nav>
-    <main>
-      
+            
       <% if logged_in? %>
       <h2> Hello <%= current_user.username %>!</h2>
       <form action="<%= session_url %>" method="POST">
@@ -27,6 +25,9 @@
         <a href="<%= new_session_url %>"> Log in </a>
       <% end %>
       
+    </nav>
+    <main>
+
       
       <%= yield %>
     </main>
